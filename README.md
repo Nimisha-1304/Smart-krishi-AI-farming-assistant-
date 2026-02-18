@@ -23,16 +23,44 @@ multilingual support (English, Hindi, Marathi), and role-based dashboards (Farme
 - Notifications for weather, harvest, and fertilizer schedule
 - Mobile-first green gradient UI with rounded cards and soft shadows
 
-## Run Backend
+---
+
+## Where to run this?
+
+Run commands from the project root folder:
 
 ```bash
-python -m venv .venv
+cd /path/to/Smart-krishi-AI-farming-assistant-
+```
+
+You need **2 terminals**:
+
+- **Terminal 1:** backend (FastAPI) on port `8000`
+- **Terminal 2:** frontend (React/Vite) on port `5173`
+
+---
+
+## Quick Start
+
+### 1) Start Backend (Terminal 1)
+
+From project root:
+
+```bash
+python3 -m venv .venv
 source .venv/bin/activate
-pip install fastapi uvicorn python-multipart
+pip install -r backend/requirements.txt
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-## Run Frontend
+Backend API will be available at:
+
+- `http://127.0.0.1:8000`
+- API docs: `http://127.0.0.1:8000/docs`
+
+### 2) Start Frontend (Terminal 2)
+
+From project root:
 
 ```bash
 cd frontend
@@ -40,7 +68,11 @@ npm install
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173`.
+Frontend will be available at:
+
+- `http://127.0.0.1:5173`
+
+---
 
 ## API Endpoints
 
@@ -49,3 +81,11 @@ Open `http://127.0.0.1:5173`.
 - `POST /api/detect-disease`
 - `GET /api/market-prices?crop=<name>`
 - `GET /api/notifications?role=farmer|admin`
+
+---
+
+## Common Issues
+
+- If frontend cannot call backend, confirm backend is running on port `8000`.
+- If `npm install` fails in restricted environments, run it on a machine with npm registry access.
+- If upload fails on disease detection, ensure `python-multipart` is installed in backend env.
