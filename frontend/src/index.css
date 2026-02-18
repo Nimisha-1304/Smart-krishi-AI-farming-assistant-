@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gradient-to-br from-farm-50 via-white to-farm-100 text-slate-800;
+  font-family: 'Inter', 'Noto Sans Devanagari', system-ui, sans-serif;
+}
