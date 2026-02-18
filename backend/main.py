@@ -16,6 +16,30 @@ app.add_middleware(
 )
 
 
+
+
+@app.get("/")
+def root():
+    return {
+        "message": "Smart Krishi backend is running.",
+        "api_base": "/api",
+        "docs": "/docs",
+    }
+
+
+@app.get("/api")
+def api_root():
+    return {
+        "message": "Smart Krishi API is live.",
+        "available_endpoints": [
+            "/api/dashboard",
+            "/api/recommend-crop",
+            "/api/detect-disease",
+            "/api/market-prices",
+            "/api/notifications",
+        ],
+    }
+
 class CropRecommendationRequest(BaseModel):
     soil_type: str
     season: str

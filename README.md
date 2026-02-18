@@ -56,6 +56,7 @@ uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 Backend API will be available at:
 
 - `http://127.0.0.1:8000`
+- `http://127.0.0.1:8000/api` (quick API status endpoint)
 - API docs: `http://127.0.0.1:8000/docs`
 
 ### 2) Start Frontend (Terminal 2)
@@ -86,6 +87,14 @@ Frontend will be available at:
 
 ## Common Issues
 
+- **ERR_CONNECTION_REFUSED on `127.0.0.1:8000/api`:** backend is not running yet. Start Terminal 1 with:
+
+  ```bash
+  source .venv/bin/activate
+  uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+  ```
+
+  Then open `http://127.0.0.1:8000/api` to verify the API status response.
 - If frontend cannot call backend, confirm backend is running on port `8000`.
 - If `npm install` fails in restricted environments, run it on a machine with npm registry access.
 - If upload fails on disease detection, ensure `python-multipart` is installed in backend env.
